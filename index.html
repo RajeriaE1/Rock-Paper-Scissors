@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+      function getComputerChoice(){
+        let randomNumber = Math.floor(Math.random() * 3);
+
+           if (randomNumber === 0){
+              return "rock";
+               } else if (randomNumber === 1){
+                  return "paper";
+                 } else { 
+                    return "scissors"
+    }
+}
+      function getHumanChoice(){
+        let userInput = prompt("Type in rock, paper, or scissors:").trim().toLowerCase();
+
+        if (userInput === "rock"){
+            return "rock";
+        } else if (userInput === "paper"){
+            return "paper";
+        } else if (userInput === "scissors"){
+            return "scissors";
+        } else {
+            return "Invalid Choice";
+        }
+      }
+
+      function playGame(){
+
+      let humanScore = 0;
+      let computerScore = 0;
+
+      function playRound(humanChoice, computerChoice){
+        humanChoice = humanChoice.toLowerCase();
+
+        if(humanChoice === computerChoice){
+            console.log("It's a tie!");
+        } else if (humanChoice === "rock" && computerChoice === "scissors"){
+            humanScore++;
+            console.log("You win, rock beats scissors");
+        } else if (humanChoice === "paper" && computerChoice === "rock"){
+            humanScore++;
+            console.log("You win, paper beats rock");
+        } else if (humanChoice === "scissors" && computerChoice === "paper"){
+            humanScore++;
+            console.log("You win, scissors beats paper")
+        } else if (computerChoice === "paper" && humanChoice === "rock") {
+            computerScore++;
+            console.log("You lose, paper beats rock");
+        } else if (computerChoice === "rock" && humanChoice === "scissors"){
+            computerScore++;
+            console.log("You lose, rock beats scissors");
+        } else if (computerChoice === "scissors" && humanChoice === "paper"){
+            computerScore++;
+            console.log("You lose, scissors beats paper");
+        }
+      }
+
+      for (let i = 0; i < 5; i++) {
+        const humanSelection = getHumanChoice();
+        const computerSelection = getComputerChoice();
+
+        playRound(humanSelection, computerSelection);
+      }
+
+      if (humanScore > computerScore){
+        console.log("you are the final winner!");
+      } else if (computerScore > humanScore){
+        console.log("Computer is the final winner!");
+      } else {
+        console.log("The game is a tie!");
+      }
+    }
+    playGame();
+
+    
+
+    </script>
+</body>
+</html>
+
+<!--PsuedoCode
+
+1. Randomization: We need something to give us randomness (built-in JS method Math.random)
+   Math.floor() allows you toround a decimal down to the nearest whole number (ie. Math.floor(Math.random() * 3) = 0, 1, 2)
+
+2. Map the numbers to choices (ie. 1=rock 2=paper 3=scissors)
+   Using if / else if/ else:
+     if the number is 0 -> rock
+     if the number is 1 -> paper
+     if the number is 2 -> scissors
+
+function getComputerChoice(){
+  let randomNumber = Math.floor(Math.random() * 3);
+
+  if (randomNumber === 0){
+  return "rock";
+  } else if (randomNumber === 1){
+   return "paper";
+   } else {   (else don take a condition) 
+    return "scissors"
+    }
+}
+
+-->
